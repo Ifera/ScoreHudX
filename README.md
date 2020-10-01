@@ -20,7 +20,7 @@
 |`{item_count}`|The count of the item in players hand|
 |`{x}`|Player's `x` coordinate|
 |`{y}`|Player's `y` coordinate|
-|`{z}`||Player's `z` coordinate|
+|`{z}`|Player's `z` coordinate|
 |`{load}`|Current load on the server|
 |`{tps}`|Current TPS of the server|
 |`{level_name}`, `{world_name}`|The name of the world the player is on|
