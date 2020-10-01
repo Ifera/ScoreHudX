@@ -14,6 +14,7 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\Player;
+use pocketmine\scheduler\ClosureTask;
 use function count;
 use function intval;
 use function is_null;
@@ -33,11 +34,21 @@ class EventListener implements Listener{
 	}
 
 	public function onQuit(PlayerQuitEvent $event){
-		(new ServerTagUpdateEvent(new ScoreTag("scorehudx.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
+		$this->plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $_): void{
+			(new ServerTagUpdateEvent(new ScoreTag("scorehudx.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
+		}), 20);
 	}
 
 	public function onMove(PlayerMoveEvent $event){
-		if($event->getTo()->distance($event->getFrom()) < 1){
+		$fX = intval($event->getFrom()->getX());
+		$fY = intval($event->getFrom()->getY());
+		$fZ = intval($event->getFrom()->getZ());
+
+		$tX = intval($event->getTo()->getX());
+		$tY = intval($event->getTo()->gety());
+		$tZ = intval($event->getTo()->getZ());
+
+		if($fX === $tX && $fY=== $tY && $fZ === $tZ){
 			return;
 		}
 
