@@ -5,6 +5,6 @@ branches:
 projects:
   ScoreHudX:
     path: ""
-  lint:
-    phpstan: false
+    lint:
+      phpstan: false
 ...
