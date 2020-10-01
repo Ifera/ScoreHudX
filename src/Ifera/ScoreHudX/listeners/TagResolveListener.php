@@ -1,10 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Ifera\ScoreHudX;
+namespace Ifera\ScoreHudX\listeners;
 
 use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\ScoreHud\ScoreHudSettings;
+use Ifera\ScoreHudX\ScoreHudX;
 use pocketmine\event\Listener;
 use function count;
 use function date;
@@ -12,7 +13,7 @@ use function explode;
 use function intval;
 use function strval;
 
-class EventListener implements Listener{
+class TagResolveListener implements Listener{
 
 	/** @var ScoreHudX */
 	private $plugin;
@@ -92,7 +93,7 @@ class EventListener implements Listener{
 
 			case "level_folder_name":
 			case "world_folder_name":
-			$value = $player->getLevelNonNull()->getFolderName();
+				$value = $player->getLevelNonNull()->getFolderName();
 			break;
 
 			case "ip":
