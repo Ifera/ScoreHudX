@@ -10,23 +10,23 @@
 
 | Tag | Description |
 |:--:|:--:|
-|`{name}`, `{real_name}`|The name of the player|
-|`{display_name}`|Display name of the player|
-|`{online}`|The number of players online on the server|
-|`{max_online}`|Maximum number of players that the server supports|
-|`{item_name}`|The name of the item in players hand|
-|`{item_id}`|The id of the item in players hand|
-|`{item_meta}`|The meta of the item in players hand|
-|`{item_count}`|The count of the item in players hand|
-|`{x}`|Player's `x` coordinate|
-|`{y}`|Player's `y` coordinate|
-|`{z}`|Player's `z` coordinate|
-|`{load}`|Current load on the server|
-|`{tps}`|Current TPS of the server|
-|`{level_name}`, `{world_name}`|The name of the world the player is on|
-|`{level_folder_name}`, `{world_folder_name}`|The folder name of the world the player is on|
-|`{world_player_count}`|Number of players on the world|
-|`{ip}`|IP address of the player|
-|`{ping}`|Ping of the player|
-|`{time}`|Current time|
-|`{date}`|Current date|
+|`{scorehudx.name}`, `{scorehudx.real_name}`|The name of the player|
+|`{scorehudx.display_name}`|Display name of the player|
+|`{scorehudx.online}`|The number of players online on the server|
+|`{scorehudx.max_online}`|Maximum number of players that the server supports|
+|`{scorehudx.item_name}`|The name of the item in players hand|
+|`{scorehudx.item_id}`|The id of the item in players hand|
+|`{scorehudx.item_meta}`|The meta of the item in players hand|
+|`{scorehudx.item_count}`|The count of the item in players hand|
+|`{scorehudx.x}`|Player's `x` coordinate|
+|`{scorehudx.y}`|Player's `y` coordinate|
+|`{scorehudx.z}`|Player's `z` coordinate|
+|`{scorehudx.load}`|Current load on the server|
+|`{scorehudx.tps}`|Current TPS of the server|
+|`{scorehudx.level_name}`, `{scorehudx.world_name}`|The name of the world the player is on|
+|`{scorehudx.level_folder_name}`, `{scorehudx.world_folder_name}`|The folder name of the world the player is on|
+|`{scorehudx.world_player_count}`|Number of players on the world|
+|`{scorehudx.ip}`|IP address of the player|
+|`{scorehudx.ping}`|Ping of the player|
+|`{scorehudx.time}`|Current time|
+|`{scorehudx.date}`|Current date|
