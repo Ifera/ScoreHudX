@@ -10,5 +10,5 @@
 
 | Plugin | Required Plugin | Download |
 |:--:|:--:|:--:|
-|BasicScore|`N/A`|[Download]()|
-|EcoAPIScore|[EconomyAPI](https://github.com/poggit-orphanage/EconomyS/tree/master/EconomyAPI)|[Download]()|
+|BasicScore|`N/A`|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/BasicScore)|
+|EcoAPIScore|[EconomyAPI](https://github.com/poggit-orphanage/EconomyS/tree/master/EconomyAPI)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/EcoAPIScore)|
