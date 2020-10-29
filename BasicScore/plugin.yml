@@ -1,5 +1,5 @@
-name: ScoreHudX
-main: Ifera\ScoreHudX\ScoreHudX
+name: BasicScore
+main: Ifera\BasicScore\BasicScore
 api: [3.0.0]
 version: 1.0.0
 author: Ifera

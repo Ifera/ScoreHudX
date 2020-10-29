@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Ifera\ScoreHudX\listeners;
+namespace Ifera\BasicScore\listeners;
 
 use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\ScoreHud\ScoreHudSettings;
-use Ifera\ScoreHudX\ScoreHudX;
+use Ifera\BasicScore\Main;
 use pocketmine\event\Listener;
 use function count;
 use function date;
@@ -15,10 +15,10 @@ use function strval;
 
 class TagResolveListener implements Listener{
 
-	/** @var ScoreHudX */
+	/** @var Main */
 	private $plugin;
 
-	public function __construct(ScoreHudX $plugin){
+	public function __construct(Main $plugin){
 		$this->plugin = $plugin;
 	}
 
@@ -28,7 +28,7 @@ class TagResolveListener implements Listener{
 		$tags = explode('.', $tag->getName(), 2);
 		$value = "";
 
-		if($tags[0] !== 'scorehudx' || count($tags) < 2){
+		if($tags[0] !== 'basicscore' || count($tags) < 2){
 			return;
 		}
 
