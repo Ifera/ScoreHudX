@@ -5,6 +5,10 @@ branches:
 projects:
   BasicScore:
     path: BasicScore
+    lint:
+      phpstan: false
   EcoAPIScore:
     path: EcoAPIScore
+    lint:
+      phpstan: false
 ...
