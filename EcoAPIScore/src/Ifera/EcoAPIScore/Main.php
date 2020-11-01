@@ -10,7 +10,6 @@ use pocketmine\plugin\PluginBase;
 class Main extends PluginBase{
 
 	public function onEnable(){
-		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 	}
