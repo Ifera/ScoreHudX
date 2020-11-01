@@ -11,4 +11,8 @@ projects:
     path: EcoAPIScore
     lint:
       phpstan: false
+  CombatScore:
+    path: CombatScore
+    lint:
+      phpstan: false
 ...
