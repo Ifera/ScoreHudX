@@ -15,4 +15,8 @@ projects:
     path: CombatScore
     lint:
       phpstan: false
+  FactionsProScore:
+    path: FactionsProScore
+    lint:
+      phpstan: false
 ...

@@ -1,0 +1,3 @@
+# The interval for updating score hud tags.
+# Default: 5
+update-interval: 5
