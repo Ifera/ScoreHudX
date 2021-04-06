@@ -22,3 +22,8 @@
 |`{basicscore.ping}`|Ping of the player|
 |`{basicscore.time}`|Current time|
 |`{basicscore.date}`|Current date|
+|`{basicscore.memory_main_thread}`|Main thread memory|
+|`{basicscore.memory_total}`|Total memory|
+|`{basicscore.memory_virtual}`|Virtual memory|
+|`{basicscore.memory_heap}`|Heap memory|
+|`{basicscore.memory_global}`|Global memory|

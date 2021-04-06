@@ -7,10 +7,13 @@ use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\ScoreHud\ScoreHudSettings;
 use Ifera\BasicScore\Main;
 use pocketmine\event\Listener;
+use pocketmine\utils\Process;
 use function count;
 use function date;
 use function explode;
 use function intval;
+use function number_format;
+use function round;
 use function strval;
 
 class TagResolveListener implements Listener{
@@ -115,6 +118,38 @@ class TagResolveListener implements Listener{
 			case "world_player_count":
 				$value = count($player->getLevelNonNull()->getPlayers());
 			break;
+		}
+
+		if((bool) $this->plugin->getConfig()->get("enable-memory-tags", false)){
+			$rUsage = Process::getRealMemoryUsage();
+			$mUsage = Process::getAdvancedMemoryUsage();
+
+			$globalMemory = "MAX";
+			if($this->plugin->getServer()->getProperty("memory.global-limit") > 0){
+				$globalMemory = number_format(round($this->plugin->getServer()->getProperty("memory.global-limit"), 2), 2) . " MB";
+			}
+
+			switch($tags[1]){
+				case "memory_main_thread":
+					$value = strval(number_format(round(($mUsage[0] / 1024) / 1024, 2), 2) . " MB");
+				break;
+
+				case "memory_total":
+					$value = strval(number_format(round(($mUsage[1] / 1024) / 1024, 2), 2) . " MB");
+				break;
+
+				case "memory_virtual":
+					$value = strval(number_format(round(($mUsage[2] / 1024) / 1024, 2), 2) . " MB");
+				break;
+
+				case "memory_heap":
+					$value = strval(number_format(round(($rUsage[0] / 1024) / 1024, 2), 2) . " MB");
+				break;
+
+				case "memory_global":
+					$value = $globalMemory;
+				break;
+			}
 		}
 
 		$tag->setValue(strval($value));
