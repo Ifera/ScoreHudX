@@ -19,4 +19,8 @@ projects:
     path: FactionsProScore
     lint:
       phpstan: false
+  PurePermsScore:
+    path: PurePermsScore
+    lint:
+      phpstan: false
 ...
