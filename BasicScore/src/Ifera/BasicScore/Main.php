@@ -5,6 +5,7 @@ namespace Ifera\BasicScore;
 
 use Ifera\BasicScore\listeners\EventListener;
 use Ifera\BasicScore\listeners\TagResolveListener;
+use Ifera\BasicScore\utils\Utils;
 use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\event\ServerTagsUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
@@ -25,7 +26,15 @@ class Main extends PluginBase{
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
+		if(!Utils::resolveDependency($this)){
+			return;
+		}
+
 		$task = new ClosureTask(function(int $_): void{
+			if(!Utils::resolveDependency($this)){
+				return;
+			}
+
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.ping", strval($player->getPing()))))->call();
 			}
