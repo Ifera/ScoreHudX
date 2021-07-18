@@ -82,10 +82,10 @@ class EventListener implements Listener{
 	}
         
         public function onExperienceChange(PlayerExperienceChangeEvent $event){
-               $player = $event->getPlayer();
-               $newLevel = $event->getXpLevel();
+                $player = $event->getPlayer();
+                $newLevel = $event->getXpLevel();
     
-              (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp", $newLevel->getXpLevel())))->call();
+                (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp", $newLevel->getXpLevel())))->call();
      
         }
 
