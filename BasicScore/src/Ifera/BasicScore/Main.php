@@ -42,7 +42,7 @@ class Main extends PluginBase{
 
 			(new ServerTagsUpdateEvent([
 				new ScoreTag("basicscore.load", strval($this->getServer()->getTickUsage())),
-				new ScoreTag("basicscore.tps", strval($this->getServer()->getTicksPerSecond())),
+				new ScoreTag("basicscore.tps",  strval($this->getServer()->getTicksPerSecond())),
 				new ScoreTag("basicscore.time", strval(date(ScoreHudSettings::getTimeFormat()))),
 				new ScoreTag("basicscore.date", strval(date(ScoreHudSettings::getDateFormat())))
 			]))->call();
