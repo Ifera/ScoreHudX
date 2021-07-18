@@ -9,6 +9,7 @@ use Ifera\ScoreHud\scoreboard\ScoreTag;
 use Ifera\BasicScore\Main;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerExperienceChangeEvent;
 use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
@@ -79,6 +80,14 @@ class EventListener implements Listener{
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.level_folder_name", $target->getFolderName())))->call();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.world_folder_name", $target->getFolderName())))->call();
 	}
+        
+        public function onExperienceChange(PlayerExperienceChangeEvent $event){
+               $player = $event->getPlayer();
+               $newLevel = $event->getXpLevel();
+    
+              (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp", $newLevel->getXpLevel())))->call();
+     
+        }
 
 	public function onItemHeld(PlayerItemHeldEvent $event){
 		$player = $event->getPlayer();
