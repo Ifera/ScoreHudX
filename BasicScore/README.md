@@ -4,7 +4,7 @@
 |:--:|:--:|
 |`{basicscore.name}`, `{basicscore.real_name}`|The name of the player|
 |`{basicscore.display_name}`|Display name of the player|
-|`{basicscore.xp}`|Display Xp Level Of Player|
+|`{basicscore.xp}`|Display xp level of player|
 |`{basicscore.online}`|The number of players online on the server|
 |`{basicscore.max_online}`|Maximum number of players that the server supports|
 |`{basicscore.item_name}`|The name of the item in players hand|
