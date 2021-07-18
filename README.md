@@ -1,12 +1,8 @@
 # ScoreHudX
 
-| HitCount | License |
-|:--:|:--:|
-|[![HitCount](http://hits.dwyl.io/Ifera/ScoreHudX.svg)](http://hits.dwyl.io/Ifera/ScoreHudX)|[![GitHub license](https://img.shields.io/github/license/Ifera/ScoreHudX.svg)](https://github.com/Ifera/ScoreHudX/blob/master/LICENSE)|
+A repository containing plugins implementing tags for ScoreHud.
 
-### A repository containing plugins implementing tags for ScoreHud.
-
-### Plugin List
+## Plugin List
 
 | Plugin | Required Plugin | Download |
 |:--:|:--:|:--:|
@@ -16,10 +12,10 @@
 |FactionsProScore|[FactionsPro](https://github.com/poggit-orphanage/FactionsPro)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/FactionsProScore)|
 |PurePermsScore|[PurePerms](https://github.com/poggit-orphanage/PurePerms)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/PurePermsScore)|
 
-### More plugins
+## More plugins
 
 For more plugins, please check out the [discussions](https://github.com/Ifera/ScoreHudX/discussions).
 
-### Showcase your plugin
+## Showcase your plugin
 
 Please read [this](https://github.com/Ifera/ScoreHudX/discussions/12).
