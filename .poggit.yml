@@ -1,5 +1,5 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Ifera/ScoreHudX
-build-by-default: false
+build-by-default: true
 branches:
 - main
 projects:
