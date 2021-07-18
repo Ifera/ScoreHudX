@@ -7,8 +7,11 @@ use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\event\ServerTagUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
 use Ifera\BasicScore\Main;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityRegainHealthEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerExperienceChangeEvent;
 use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
@@ -38,7 +41,29 @@ class EventListener implements Listener{
 			(new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
 		}), 20);
 	}
-
+	
+	public function onDamage(EntityDamageEvent $event){
+	    $player = $event->getEntity();
+	    if(!$player instanceof Player) return;
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.health", strval(intval($player->getHealth())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.max_health", strval(intval($player->getMaxHealth())))))->call();
+	}
+	
+	public function onRegainHealth(EntityRegainHealthEvent $event){
+	    $player = $event->getEntity();
+	    if(!$player instanceof Player) return;
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.health", strval(intval($player->getHealth())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.max_health", strval(intval($player->getMaxHealth())))))->call();
+	}
+	
+	public function onExperienceChange(PlayerExperienceChangeEvent $event){
+	    $player = $event->getPlayer();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_level", strval(intval($player->getXpLevel())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_progress", strval(intval($player->getXpProgress())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_remainder", strval(intval($player->getRemainderXp())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_current_total", strval(intval($player->getCurrentTotalXp())))))->call();
+	}
+	
 	public function onMove(PlayerMoveEvent $event){
 		$fX = intval($event->getFrom()->getX());
 		$fY = intval($event->getFrom()->getY());

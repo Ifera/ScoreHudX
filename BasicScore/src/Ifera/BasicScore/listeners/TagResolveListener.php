@@ -106,6 +106,30 @@ class TagResolveListener implements Listener{
 			case "ping":
 				$value = $player->getPing();
 			break;
+			
+			case "health":
+			    $value = intval($player->getHealth());
+			break;
+			
+			case "max_health":
+			    $value = intval($player->getMaxHealth());
+			break;
+			
+			case "xp_level":
+				$value = intval($player->getXpLevel());
+			break;
+
+			case "xp_progress":
+				$value = intval($player->getXpProgress());
+			break;
+			
+			case "xp_remainder":
+			    $value = intval($player->getRemainderXp());
+			break;
+			
+			case "xp_current_total":
+			    $value = intval($player->getCurrentTotalXp());
+			break;
 
 			case "time":
 				$value = date(ScoreHudSettings::getTimeFormat());
