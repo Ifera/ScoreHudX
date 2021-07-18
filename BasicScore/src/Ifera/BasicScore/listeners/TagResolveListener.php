@@ -114,6 +114,10 @@ class TagResolveListener implements Listener{
 			case "date":
 				$value = date(ScoreHudSettings::getDateFormat());
 			break;
+                        
+                        case "xp":
+                                $value = $player->getXpLevel();
+                        break;
 
 			case "world_player_count":
 				$value = count($player->getLevelNonNull()->getPlayers());

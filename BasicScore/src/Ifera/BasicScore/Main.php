@@ -37,11 +37,12 @@ class Main extends PluginBase{
 
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.ping", strval($player->getPing()))))->call();
+                                (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp", strval($player->getXpLevel()))))->call();
 			}
 
 			(new ServerTagsUpdateEvent([
 				new ScoreTag("basicscore.load", strval($this->getServer()->getTickUsage())),
-				new ScoreTag("basicscore.tps", strval($this->getServer()->getTicksPerSecond())),
+				new ScoreTag("basicscore.tps",  strval($this->getServer()->getTicksPerSecond())),
 				new ScoreTag("basicscore.time", strval(date(ScoreHudSettings::getTimeFormat()))),
 				new ScoreTag("basicscore.date", strval(date(ScoreHudSettings::getDateFormat())))
 			]))->call();
