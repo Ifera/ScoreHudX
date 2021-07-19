@@ -104,7 +104,7 @@ class TagResolveListener implements Listener{
 			break;
 
 			case "ping":
-				$value = $player->getPing();
+			    $value = $player->getPing();
 			break;
 			
 			case "health":
@@ -120,7 +120,7 @@ class TagResolveListener implements Listener{
 			break;
 
 			case "xp_progress":
-				$value = intval($player->getXpProgress());
+			    $value = intval($player->getXpProgress());
 			break;
 			
 			case "xp_remainder":
