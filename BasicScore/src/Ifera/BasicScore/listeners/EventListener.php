@@ -29,17 +29,17 @@ class EventListener implements Listener{
 	private $plugin;
 
 	public function __construct(Main $plugin){
-		$this->plugin = $plugin;
+	    $this->plugin = $plugin;
 	}
 
 	public function onJoin(PlayerJoinEvent $event){
-		(new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
+	    (new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
 	}
 
 	public function onQuit(PlayerQuitEvent $event){
-		$this->plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $_): void{
-			(new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
-		}), 20);
+	    $this->plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $_): void{
+	        (new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
+	    }), 20);
 	}
 	
 	public function onDamage(EntityDamageEvent $event){
@@ -58,6 +58,7 @@ class EventListener implements Listener{
 	
 	public function onExperienceChange(PlayerExperienceChangeEvent $event){
 	    $player = $event->getEntity();
+	    if(!$player instanceof Player) return;
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_level", strval(intval($player->getXpLevel())))))->call();
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_progress", strval(intval($player->getXpProgress())))))->call();
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_remainder", strval(intval($player->getRemainderXp())))))->call();
@@ -68,17 +69,13 @@ class EventListener implements Listener{
 		$fX = intval($event->getFrom()->getX());
 		$fY = intval($event->getFrom()->getY());
 		$fZ = intval($event->getFrom()->getZ());
-
 		$tX = intval($event->getTo()->getX());
 		$tY = intval($event->getTo()->gety());
 		$tZ = intval($event->getTo()->getZ());
-
 		if($fX === $tX && $fY=== $tY && $fZ === $tZ){
 			return;
 		}
-
 		$player = $event->getPlayer();
-
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.x", strval(intval($player->getX())))))->call();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.y", strval(intval($player->getY())))))->call();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.z", strval(intval($player->getZ())))))->call();
@@ -87,17 +84,9 @@ class EventListener implements Listener{
 	public function onTeleport(EntityTeleportEvent $event){
 		$player = $event->getEntity();
 		$target = $event->getTo()->getLevel();
-
-		if(!$player instanceof Player){
-			return;
-		}
-
-		if(is_null($target)){
-			return;
-		}
-
+		if(!$player instanceof Player) return;
+		if(is_null($target)) return;
 		(new ServerTagUpdateEvent(new ScoreTag("basicscore.world_player_count", strval(count($target->getPlayers())))))->call();
-
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.level_name", $target->getName())))->call();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.world_name", $target->getName())))->call();
 
@@ -108,7 +97,6 @@ class EventListener implements Listener{
 	public function onItemHeld(PlayerItemHeldEvent $event){
 		$player = $event->getPlayer();
 		$item = $event->getItem();
-
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.item_name", $item->getName())))->call();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.item_id", strval($item->getId()))))->call();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.item_meta", strval($item->getDamage()))))->call();
