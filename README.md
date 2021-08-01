@@ -1,6 +1,6 @@
-# ScoreHudX
+# ScoreHudX [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/urQt6ETgYu)
 
-A repository containing plugins implementing tags for ScoreHud.
+A repository containing plugins implementing tags for ScoreHud. 
 
 ## Plugin List
 
