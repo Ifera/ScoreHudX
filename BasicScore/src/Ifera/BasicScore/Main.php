@@ -26,9 +26,9 @@ class Main extends PluginBase{
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
-		if(!Utils::resolveDependency($this)){
-			return;
-		}
+		//if(!Utils::resolveDependency($this)){
+		//	return;
+		//}
 
 		$task = new ClosureTask(function(int $_): void{
 			if(!Utils::resolveDependency($this)){
