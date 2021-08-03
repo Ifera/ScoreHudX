@@ -31,9 +31,9 @@ class Main extends PluginBase{
 		//}
 
 		$task = new ClosureTask(function(int $_): void{
-			if(!Utils::resolveDependency($this)){
-				return;
-			}
+			//if(!Utils::resolveDependency($this)){
+			//	return;
+			//}
 
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.ping", strval($player->getPing()))))->call();
