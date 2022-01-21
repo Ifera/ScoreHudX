@@ -11,16 +11,19 @@ use function count;
 use function explode;
 use function strval;
 
-class TagResolveListener implements Listener{
+class TagResolveListener implements Listener
+{
 
 	/** @var Main */
 	private $plugin;
 
-	public function __construct(Main $plugin){
+	public function __construct(Main $plugin)
+        {
 		$this->plugin = $plugin;
 	}
 
-	public function onTagResolve(TagsResolveEvent $event){
+	public function onTagResolve(TagsResolveEvent $event): void
+        {
 		$player = $event->getPlayer();
 		$tag = $event->getTag();
 		$tags = explode('.', $tag->getName(), 2);
@@ -30,7 +33,8 @@ class TagResolveListener implements Listener{
 			return;
 		}
 
-		switch($tags[1]){
+		switch($tags[1])
+                {
 			case "rank":
 				$value = $this->plugin->getPlayerRank($player);
 			break;
