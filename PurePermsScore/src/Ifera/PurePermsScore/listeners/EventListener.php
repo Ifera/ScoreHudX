@@ -19,11 +19,13 @@ class EventListener implements Listener{
 	/** @var Main */
 	private $plugin;
 
-	public function __construct(Main $plugin){
+	public function __construct(Main $plugin)
+        {
 		$this->plugin = $plugin;
 	}
 
-	public function onJoin(PlayerJoinEvent $event){
+	public function onJoin(PlayerJoinEvent $event): void
+        {
 		$player = $event->getPlayer();
 
 		if(is_null($player) || !$player->isOnline()){
@@ -44,11 +46,13 @@ class EventListener implements Listener{
 	}
 
 	// no better way to detect when the suffix or prefix of a player changes
-	public function onPlayerChat(PlayerChatEvent $event){
+	public function onPlayerChat(PlayerChatEvent $event)
+        {
 		$this->sendUpdate($event->getPlayer());
 	}
 
-	private function sendUpdate(Player $player): void{
+	private function sendUpdate(Player $player): void
+        {
 		(new PlayerTagsUpdateEvent($player, [
 			new ScoreTag("ppscore.rank", strval($this->plugin->getPlayerRank($player))),
 			new ScoreTag("ppscore.prefix", strval($this->plugin->getPrefix($player))),
