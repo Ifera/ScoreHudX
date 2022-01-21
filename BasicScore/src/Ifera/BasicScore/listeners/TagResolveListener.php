@@ -100,11 +100,11 @@ class TagResolveListener implements Listener{
 			break;
 
 			case "ip":
-			    $value = $player->getAddress();
+			    $value = $player->getNetworkSession()->getIp();
 			break;
 
 			case "ping":
-			    $value = $player->getPing();
+			    $value = $player->getNetworkSession()->getPing();
 			break;
 			
 			case "health":
