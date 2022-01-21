@@ -62,7 +62,7 @@ class EventListener implements Listener{
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_level", strval(intval($player->getXpManager()->getXpLevel())))))->call();
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_progress", strval(intval($player->getXpManager()->getXpProgress())))))->call();
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_remainder", strval(intval($player->getXpManager()->getRemainderXp())))))->call();
-	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_current_total", strval(intval($player->getXpManager()getCurrentTotalXp())))))->call();
+	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_current_total", strval(intval($player->getXpManager()->getCurrentTotalXp())))))->call();
 	}
 	
 	public function onMove(PlayerMoveEvent $event){
