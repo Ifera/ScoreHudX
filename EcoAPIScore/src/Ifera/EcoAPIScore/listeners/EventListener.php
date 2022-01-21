@@ -8,7 +8,7 @@ use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
 use onebone\economyapi\event\money\MoneyChangedEvent;
 use pocketmine\event\Listener;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use function is_null;
 use function strval;
 
