@@ -12,19 +12,24 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use function strval;
 
-class Main extends PluginBase{
+class Main extends PluginBase
+{
 
 	/** @var FactionMain */
 	private $owningPlugin;
 
-	public function onEnable(){
+	public function onEnable(): void
+        {
 		$this->saveDefaultConfig();
 		$this->owningPlugin = $this->getServer()->getPluginManager()->getPlugin("FactionsPro");
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
-		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_): void{
-			foreach($this->getServer()->getOnlinePlayers() as $player){
-				if(!$player->isOnline()){
+		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_): void
+                {
+			foreach($this->getServer()->getOnlinePlayers() as $player)
+                        {
+				if(!$player->isOnline())
+                                {
 					continue;
 				}
 
@@ -34,7 +39,8 @@ class Main extends PluginBase{
 		}), 20);
 	}
 
-	public function getPlayerFaction(Player $player): string{
+	public function getPlayerFaction(Player $player): string
+        {
 		$factionName = $this->owningPlugin->getPlayerFaction($player->getName());
 
 		if($factionName === null){
@@ -44,7 +50,8 @@ class Main extends PluginBase{
 		return $factionName;
 	}
 
-	public function getFactionPower(Player $player){
+	public function getFactionPower(Player $player)
+        {
 		$factionsPro = $this->owningPlugin;
 		$factionName = $factionsPro->getPlayerFaction($player->getName());
 
