@@ -17,20 +17,24 @@ class EventListener implements Listener{
 	/** @var Main */
 	private $plugin;
 
-	public function __construct(Main $plugin){
+	public function __construct(Main $plugin)
+        {
 		$this->plugin = $plugin;
 	}
 
-	public function onMoneyChange(MoneyChangedEvent $event){
+	public function onMoneyChange(MoneyChangedEvent $event): void
+        {
 		$username = $event->getUsername();
 
-		if(is_null($username)){
+		if(is_null($username))
+                {
 			return;
 		}
 
 		$player = $this->plugin->getServer()->getPlayer($username);
 
-		if($player instanceof Player && $player->isOnline()){
+		if($player instanceof Player && $player->isOnline())
+                {
 			(new PlayerTagUpdateEvent($player, new ScoreTag("ecoapiscore.money", strval($event->getMoney()))))->call();
 		}
 	}
