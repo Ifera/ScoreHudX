@@ -20,7 +20,8 @@ use function strval;
 
 class Main extends PluginBase{
 
-	public function onEnable(){
+	public function onEnable(): void
+        {
 		$this->saveDefaultConfig();
 
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
