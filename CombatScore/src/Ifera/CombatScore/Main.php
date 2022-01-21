@@ -11,16 +11,19 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use function strval;
 
-class Main extends PluginBase{
+class Main extends PluginBase
+{
 
 	/** @var CombatLogger */
 	private $owningPlugin;
 
-	public function onEnable(){
+	public function onEnable(): void
+        {
 		$this->owningPlugin = $this->getServer()->getPluginManager()->getPlugin("CombatLogger");
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
-		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_): void{
+		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_): void
+                {
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				if(!$player->isOnline()){
 					continue;
@@ -31,7 +34,8 @@ class Main extends PluginBase{
 		}), 20);
 	}
 
-	public function getOwningPlugin(): CombatLogger{
+	public function getOwningPlugin(): CombatLogger
+        {
 		return $this->owningPlugin;
 	}
 }
