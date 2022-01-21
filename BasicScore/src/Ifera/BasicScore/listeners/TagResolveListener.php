@@ -70,15 +70,15 @@ class TagResolveListener implements Listener{
 			break;
 
 			case "x":
-			    $value = intval($player->getX());
+			    $value = intval($player->getPosition()->getX());
 			break;
 
 			case "y":
-			    $value = intval($player->getY());
+			    $value = intval($player->getPosition()->getY());
 			break;
 
 			case "z":
-			    $value = intval($player->getZ());
+			    $value = intval($player->getPosition()->getZ());
 			break;
 
 			case "load":
@@ -116,19 +116,19 @@ class TagResolveListener implements Listener{
 			break;
 			
 			case "xp_level":
-			    $value = intval($player->getXpLevel());
+			    $value = intval($player->getXpManager()->getXpLevel());
 			break;
 
 			case "xp_progress":
-			    $value = intval($player->getXpProgress());
+			    $value = intval($player->getXpManager->getXpProgress());
 			break;
 			
 			case "xp_remainder":
-			    $value = intval($player->getRemainderXp());
+			    $value = intval($player->getXpManager->getRemainderXp());
 			break;
 			
 			case "xp_current_total":
-			    $value = intval($player->getCurrentTotalXp());
+			    $value = intval($player->getXpManager->getCurrentTotalXp());
 			break;
 
 			case "time":
