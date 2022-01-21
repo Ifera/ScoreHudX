@@ -7,9 +7,11 @@ use Ifera\EcoAPIScore\listeners\EventListener;
 use Ifera\EcoAPIScore\listeners\TagResolveListener;
 use pocketmine\plugin\PluginBase;
 
-class Main extends PluginBase{
+class Main extends PluginBase
+{
 
-	public function onEnable(){
+	public function onEnable(): void
+        {
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 	}
