@@ -28,35 +28,41 @@ class EventListener implements Listener{
 	/** @var Main */
 	private $plugin;
 
-	public function __construct(Main $plugin){
+	public function __construct(Main $plugin)
+        {
 	    $this->plugin = $plugin;
 	}
 
-	public function onJoin(PlayerJoinEvent $event){
+	public function onJoin(PlayerJoinEvent $event): void
+        {
 	    (new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
 	}
 
-	public function onQuit(PlayerQuitEvent $event){
+	public function onQuit(PlayerQuitEvent $event): void
+        {
 	    $this->plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $_): void{
 	        (new ServerTagUpdateEvent(new ScoreTag("basicscore.online", strval(count($this->plugin->getServer()->getOnlinePlayers())))))->call();
 	    }), 20);
 	}
 	
-	public function onDamage(EntityDamageEvent $event){
+	public function onDamage(EntityDamageEvent $event): void
+        {
 	    $player = $event->getEntity();
 	    if(!$player instanceof Player) return;
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.health", strval(intval($player->getHealth())))))->call();
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.max_health", strval(intval($player->getMaxHealth())))))->call();
 	}
 	
-	public function onRegainHealth(EntityRegainHealthEvent $event){
+	public function onRegainHealth(EntityRegainHealthEvent $event): void
+        {
 	    $player = $event->getEntity();
 	    if(!$player instanceof Player) return;
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.health", strval(intval($player->getHealth())))))->call();
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.max_health", strval(intval($player->getMaxHealth())))))->call();
 	}
 	
-	public function onExperienceChange(PlayerExperienceChangeEvent $event){
+	public function onExperienceChange(PlayerExperienceChangeEvent $event): void
+        {
 	    $player = $event->getEntity();
 	    if(!$player instanceof Player) return;
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_level", strval(intval($player->getXpManager()->getXpLevel())))))->call();
@@ -65,13 +71,14 @@ class EventListener implements Listener{
 	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_current_total", strval(intval($player->getXpManager()->getCurrentTotalXp())))))->call();
 	}
 	
-	public function onMove(PlayerMoveEvent $event){
-		$fX = intval($event->getFrom()->getX());
-		$fY = intval($event->getFrom()->getY());
-		$fZ = intval($event->getFrom()->getZ());
-		$tX = intval($event->getTo()->getX());
-		$tY = intval($event->getTo()->gety());
-		$tZ = intval($event->getTo()->getZ());
+	public function onMove(PlayerMoveEvent $event): void
+        {
+		$fX = intval($event->getFrom()->getFloorX());
+		$fY = intval($event->getFrom()->getFloorY());
+		$fZ = intval($event->getFrom()->getFloorZ());
+		$tX = intval($event->getTo()->getFloorX());
+		$tY = intval($event->getTo()->getFloorY());
+		$tZ = intval($event->getTo()->getFloorZ());
 		if($fX === $tX && $fY=== $tY && $fZ === $tZ){
 			return;
 		}
@@ -81,7 +88,8 @@ class EventListener implements Listener{
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.z", strval(intval($player->getPosition()->getZ())))))->call();
 	}
 
-	public function onTeleport(EntityTeleportEvent $event){
+	public function onTeleport(EntityTeleportEvent $event): void
+        {
 		$player = $event->getEntity();
 		$target = $event->getTo()->getLevel();
 		if(!$player instanceof Player) return;
@@ -94,7 +102,8 @@ class EventListener implements Listener{
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.world_folder_name", $target->getFolderName())))->call();
 	}
 
-	public function onItemHeld(PlayerItemHeldEvent $event){
+	public function onItemHeld(PlayerItemHeldEvent $event): void
+        {
 		$player = $event->getPlayer();
 		$item = $event->getItem();
 		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.item_name", $item->getName())))->call();
