@@ -1,7 +1,7 @@
 name: FactionsProScore
 main: Ifera\FactionsProScore\Main
-api: [3.0.0]
-version: 1.0.0
+api: [4.0.0]
+version: 1.0.1
 author: Ifera
 description: A plugin implementing some basic tags for ScoreHud.
 depend: [ScoreHud, FactionsPro]
