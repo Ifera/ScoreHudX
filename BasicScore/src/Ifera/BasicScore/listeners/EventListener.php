@@ -16,7 +16,7 @@ use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\scheduler\ClosureTask;
 use function count;
 use function intval;
@@ -59,10 +59,10 @@ class EventListener implements Listener{
 	public function onExperienceChange(PlayerExperienceChangeEvent $event){
 	    $player = $event->getEntity();
 	    if(!$player instanceof Player) return;
-	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_level", strval(intval($player->getXpLevel())))))->call();
-	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_progress", strval(intval($player->getXpProgress())))))->call();
-	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_remainder", strval(intval($player->getRemainderXp())))))->call();
-	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_current_total", strval(intval($player->getCurrentTotalXp())))))->call();
+	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_level", strval(intval($player->getXpManager()->getXpLevel())))))->call();
+	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_progress", strval(intval($player->getXpManager()->getXpProgress())))))->call();
+	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_remainder", strval(intval($player->getXpManager()->getRemainderXp())))))->call();
+	    (new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.xp_current_total", strval(intval($player->getXpManager()getCurrentTotalXp())))))->call();
 	}
 	
 	public function onMove(PlayerMoveEvent $event){
@@ -76,9 +76,9 @@ class EventListener implements Listener{
 			return;
 		}
 		$player = $event->getPlayer();
-		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.x", strval(intval($player->getX())))))->call();
-		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.y", strval(intval($player->getY())))))->call();
-		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.z", strval(intval($player->getZ())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.x", strval(intval($player->getPosition()->getX())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.y", strval(intval($player->getPosition()->getY())))))->call();
+		(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.z", strval(intval($player->getPosition()->getZ())))))->call();
 	}
 
 	public function onTeleport(EntityTeleportEvent $event){
