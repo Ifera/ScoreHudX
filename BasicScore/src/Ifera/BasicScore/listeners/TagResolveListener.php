@@ -16,16 +16,19 @@ use function number_format;
 use function round;
 use function strval;
 
-class TagResolveListener implements Listener{
+class TagResolveListener implements Listener
+{
 
 	/** @var Main */
 	private $plugin;
 
-	public function __construct(Main $plugin){
+	public function __construct(Main $plugin)
+        {
 	    $this->plugin = $plugin;
 	}
 
-	public function onTagResolve(TagsResolveEvent $event){
+	public function onTagResolve(TagsResolveEvent $event): void
+        {
 		$player = $event->getPlayer();
 		$tag = $event->getTag();
 		$tags = explode('.', $tag->getName(), 2);
@@ -35,7 +38,8 @@ class TagResolveListener implements Listener{
 			return;
 		}
 		
-		switch($tags[1]){
+		switch($tags[1])
+                {
 			case "name":
 			case "real_name":
 			    $value = $player->getName();
@@ -144,7 +148,8 @@ class TagResolveListener implements Listener{
 			break;
 		}
 
-		if((bool) $this->plugin->getConfig()->get("enable-memory-tags", false)){
+		if((bool) $this->plugin->getConfig()->get("enable-memory-tags", false))
+                {
 			$rUsage = Process::getRealMemoryUsage();
 			$mUsage = Process::getAdvancedMemoryUsage();
 
@@ -153,7 +158,8 @@ class TagResolveListener implements Listener{
 				$globalMemory = number_format(round($this->plugin->getServer()->getProperty("memory.global-limit"), 2), 2) . " MB";
 			}
 
-			switch($tags[1]){
+			switch($tags[1])
+                        {
 				case "memory_main_thread":
 				    $value = strval(number_format(round(($mUsage[0] / 1024) / 1024, 2), 2) . " MB");
 				break;
