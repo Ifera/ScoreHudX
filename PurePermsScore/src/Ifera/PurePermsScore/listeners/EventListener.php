@@ -10,7 +10,7 @@ use Ifera\ScoreHud\scoreboard\ScoreTag;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use function is_null;
 use function strval;
 
