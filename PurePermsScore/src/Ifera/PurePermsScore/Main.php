@@ -6,7 +6,7 @@ namespace Ifera\PurePermsScore;
 use _64FF00\PurePerms\PurePerms;
 use Ifera\PurePermsScore\listeners\EventListener;
 use Ifera\PurePermsScore\listeners\TagResolveListener;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase{
