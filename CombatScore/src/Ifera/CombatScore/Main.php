@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ifera\CombatScore;
 
@@ -13,14 +14,13 @@ use function strval;
 
 class Main extends PluginBase{
 
-	/** @var CombatLogger */
-	private $owningPlugin;
+	private CombatLogger $owningPlugin;
 
-	public function onEnable(){
+	public function onEnable() : void{
 		$this->owningPlugin = $this->getServer()->getPluginManager()->getPlugin("CombatLogger");
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
-		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_): void{
+		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() : void{
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				if(!$player->isOnline()){
 					continue;
@@ -31,7 +31,7 @@ class Main extends PluginBase{
 		}), 20);
 	}
 
-	public function getOwningPlugin(): CombatLogger{
+	public function getOwningPlugin() : CombatLogger{
 		return $this->owningPlugin;
 	}
 }

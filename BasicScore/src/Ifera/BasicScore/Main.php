@@ -1,11 +1,11 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ifera\BasicScore;
 
 use Ifera\BasicScore\listeners\EventListener;
 use Ifera\BasicScore\listeners\TagResolveListener;
-use Ifera\BasicScore\utils\Utils;
 use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\event\ServerTagsUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
@@ -20,7 +20,7 @@ use function strval;
 
 class Main extends PluginBase{
 
-	public function onEnable(){
+	public function onEnable() : void{
 		$this->saveDefaultConfig();
 
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
@@ -30,13 +30,13 @@ class Main extends PluginBase{
 		//	return;
 		//}
 
-		$task = new ClosureTask(function(int $_): void{
+		$task = new ClosureTask(function() : void{
 			//if(!Utils::resolveDependency($this)){
 			//	return;
 			//}
 
 			foreach($this->getServer()->getOnlinePlayers() as $player){
-				(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.ping", strval($player->getPing()))))->call();
+				(new PlayerTagUpdateEvent($player, new ScoreTag("basicscore.ping", strval($player->getNetworkSession()->getPing()))))->call();
 			}
 
 			(new ServerTagsUpdateEvent([
@@ -51,8 +51,8 @@ class Main extends PluginBase{
 				$mUsage = Process::getAdvancedMemoryUsage();
 
 				$globalMemory = "MAX";
-				if($this->getServer()->getProperty("memory.global-limit") > 0){
-					$globalMemory = number_format(round($this->getServer()->getProperty("memory.global-limit"), 2), 2) . " MB";
+				if($this->getServer()->getMemoryManager()->getGlobalMemoryLimit() > 0){
+					$globalMemory = number_format(round($this->getServer()->getMemoryManager()->getGlobalMemoryLimit(), 2), 2) . " MB";
 				}
 
 				(new ServerTagsUpdateEvent([

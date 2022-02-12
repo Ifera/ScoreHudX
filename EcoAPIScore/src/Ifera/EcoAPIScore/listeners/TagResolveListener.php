@@ -1,10 +1,11 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ifera\EcoAPIScore\listeners;
 
-use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\EcoAPIScore\Main;
+use Ifera\ScoreHud\event\TagsResolveEvent;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\event\Listener;
 use function count;
@@ -13,8 +14,7 @@ use function strval;
 
 class TagResolveListener implements Listener{
 
-	/** @var Main */
-	private $plugin;
+	private Main $plugin;
 
 	public function __construct(Main $plugin){
 		$this->plugin = $plugin;
@@ -29,10 +29,8 @@ class TagResolveListener implements Listener{
 			return;
 		}
 
-		switch($tags[1]){
-			case "money":
-				$value = EconomyAPI::getInstance()->myMoney($event->getPlayer());
-			break;
+		if($tags[1] === "money"){
+			$value = EconomyAPI::getInstance()->myMoney($event->getPlayer());
 		}
 
 		$tag->setValue(strval($value));

@@ -1,11 +1,11 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ifera\PurePermsScore\listeners;
 
-use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\PurePermsScore\Main;
-use onebone\economyapi\EconomyAPI;
+use Ifera\ScoreHud\event\TagsResolveEvent;
 use pocketmine\event\Listener;
 use function count;
 use function explode;
@@ -33,15 +33,15 @@ class TagResolveListener implements Listener{
 		switch($tags[1]){
 			case "rank":
 				$value = $this->plugin->getPlayerRank($player);
-			break;
+				break;
 
 			case "prefix":
 				$value = $this->plugin->getPrefix($player);
-			break;
+				break;
 
 			case "suffix":
 				$value = $this->plugin->getSuffix($player);
-			break;
+				break;
 		}
 
 		$tag->setValue(strval($value));

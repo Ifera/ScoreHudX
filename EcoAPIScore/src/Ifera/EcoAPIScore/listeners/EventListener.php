@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ifera\EcoAPIScore\listeners;
 
@@ -8,14 +9,13 @@ use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
 use onebone\economyapi\event\money\MoneyChangedEvent;
 use pocketmine\event\Listener;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use function is_null;
 use function strval;
 
 class EventListener implements Listener{
 
-	/** @var Main */
-	private $plugin;
+	private Main $plugin;
 
 	public function __construct(Main $plugin){
 		$this->plugin = $plugin;
@@ -28,7 +28,7 @@ class EventListener implements Listener{
 			return;
 		}
 
-		$player = $this->plugin->getServer()->getPlayer($username);
+		$player = $this->plugin->getServer()->getPlayerExact($username);
 
 		if($player instanceof Player && $player->isOnline()){
 			(new PlayerTagUpdateEvent($player, new ScoreTag("ecoapiscore.money", strval($event->getMoney()))))->call();

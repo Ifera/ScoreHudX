@@ -1,10 +1,11 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ifera\CombatScore\listeners;
 
-use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\CombatScore\Main;
+use Ifera\ScoreHud\event\TagsResolveEvent;
 use pocketmine\event\Listener;
 use function count;
 use function explode;
@@ -12,8 +13,7 @@ use function strval;
 
 class TagResolveListener implements Listener{
 
-	/** @var Main */
-	private $plugin;
+	private Main $plugin;
 
 	public function __construct(Main $plugin){
 		$this->plugin = $plugin;
@@ -28,10 +28,8 @@ class TagResolveListener implements Listener{
 			return;
 		}
 
-		switch($tags[1]){
-			case "duration":
-				$value = $this->plugin->getOwningPlugin()->getTagDuration($event->getPlayer());
-			break;
+		if($tags[1] === "duration"){
+			$value = $this->plugin->getOwningPlugin()->getTagDuration($event->getPlayer());
 		}
 
 		$tag->setValue(strval($value));
