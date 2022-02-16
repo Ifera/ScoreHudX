@@ -18,7 +18,7 @@ use function round;
 
 class Main extends PluginBase{
 
-	protected function onEnable() : void{
+	protected function onEnable(): void{
 		$this->saveDefaultConfig();
 
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);

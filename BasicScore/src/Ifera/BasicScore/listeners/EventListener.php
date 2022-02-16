@@ -34,7 +34,7 @@ class EventListener implements Listener{
 	}
 
 	public function onQuit(PlayerQuitEvent $event){
-	    $this->plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $_): void{
+	    $this->plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function(): void{
 	        (new ServerTagUpdateEvent(new ScoreTag("basicscore.online", (string) count($this->plugin->getServer()->getOnlinePlayers()))))->call();
 	    }), 20);
 	}
