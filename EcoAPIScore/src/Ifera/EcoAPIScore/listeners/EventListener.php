@@ -8,9 +8,8 @@ use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
 use onebone\economyapi\event\money\MoneyChangedEvent;
 use pocketmine\event\Listener;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use function is_null;
-use function strval;
 
 class EventListener implements Listener{
 
@@ -28,10 +27,10 @@ class EventListener implements Listener{
 			return;
 		}
 
-		$player = $this->plugin->getServer()->getPlayer($username);
+		$player = $this->plugin->getServer()->getPlayerByPrefix($username);
 
 		if($player instanceof Player && $player->isOnline()){
-			(new PlayerTagUpdateEvent($player, new ScoreTag("ecoapiscore.money", strval($event->getMoney()))))->call();
+			(new PlayerTagUpdateEvent($player, new ScoreTag("ecoapiscore.money", (string) $event->getMoney())))->call();
 		}
 	}
 }

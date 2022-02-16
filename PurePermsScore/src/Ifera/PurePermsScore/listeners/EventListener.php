@@ -10,9 +10,8 @@ use Ifera\ScoreHud\scoreboard\ScoreTag;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use function is_null;
-use function strval;
 
 class EventListener implements Listener{
 
@@ -50,9 +49,9 @@ class EventListener implements Listener{
 
 	private function sendUpdate(Player $player): void{
 		(new PlayerTagsUpdateEvent($player, [
-			new ScoreTag("ppscore.rank", strval($this->plugin->getPlayerRank($player))),
-			new ScoreTag("ppscore.prefix", strval($this->plugin->getPrefix($player))),
-			new ScoreTag("ppscore.suffix", strval($this->plugin->getSuffix($player)))
+			new ScoreTag("ppscore.rank", $this->plugin->getPlayerRank($player)),
+			new ScoreTag("ppscore.prefix", $this->plugin->getPrefix($player)),
+			new ScoreTag("ppscore.suffix", $this->plugin->getSuffix($player))
 		]))->call();
 	}
 }

@@ -3,13 +3,12 @@ declare(strict_types = 1);
 
 namespace Ifera\EcoAPIScore\listeners;
 
-use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\EcoAPIScore\Main;
+use Ifera\ScoreHud\event\TagsResolveEvent;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\event\Listener;
 use function count;
 use function explode;
-use function strval;
 
 class TagResolveListener implements Listener{
 
@@ -32,9 +31,9 @@ class TagResolveListener implements Listener{
 		switch($tags[1]){
 			case "money":
 				$value = EconomyAPI::getInstance()->myMoney($event->getPlayer());
-			break;
+				break;
 		}
 
-		$tag->setValue(strval($value));
+		$tag->setValue((string) $value);
 	}
 }
