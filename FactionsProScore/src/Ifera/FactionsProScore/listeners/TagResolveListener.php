@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Ifera\FactionsProScore\listeners;
 
-use Ifera\ScoreHud\event\TagsResolveEvent;
 use Ifera\FactionsProScore\Main;
+use Ifera\ScoreHud\event\TagsResolveEvent;
 use pocketmine\event\Listener;
 use function count;
 use function explode;
@@ -31,13 +31,13 @@ class TagResolveListener implements Listener{
 		switch($tags[1]){
 			case "faction":
 				$value = $this->plugin->getPlayerFaction($event->getPlayer());
-			break;
+				break;
 
 			case "power":
 				$value = $this->plugin->getFactionPower($event->getPlayer());
-			break;
+				break;
 		}
 
-		$tag->setValue(strval($value));
+		$tag->setValue((string) $value);
 	}
 }

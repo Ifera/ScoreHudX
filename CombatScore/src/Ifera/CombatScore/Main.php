@@ -16,11 +16,11 @@ class Main extends PluginBase{
 	/** @var CombatLogger */
 	private $owningPlugin;
 
-	public function onEnable(){
+	protected function onEnable(): void{
 		$this->owningPlugin = $this->getServer()->getPluginManager()->getPlugin("CombatLogger");
 		$this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
-		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_): void{
+		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(int $_) : void{
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				if(!$player->isOnline()){
 					continue;
