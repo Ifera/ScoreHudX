@@ -3,10 +3,6 @@ build-by-default: true
 branches:
 - main
 projects:
-  BasicScore:
-    path: BasicScore
-    lint:
-      phpstan: false
   EcoAPIScore:
     path: EcoAPIScore
     lint:
