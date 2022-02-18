@@ -1,9 +1,0 @@
-# Some tags require constant updating for them to work this is
-# only achieved through a task.
-# Mention the time in seconds for that value to update.
-# Default: 5 (seconds)
-update-period: 5
-
-# If you want the to show memory tags on the scoreboard then set this to true.
-# NOTE: This could lead to a drop in performance, use only if necessary.
-enable-memory-tags: false
