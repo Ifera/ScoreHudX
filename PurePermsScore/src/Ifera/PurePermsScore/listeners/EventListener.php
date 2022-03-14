@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Ifera\PurePermsScore\listeners;
 
 use _64FF00\PurePerms\event\PPGroupChangedEvent;
+use _64FF00\PurePerms\EventManager\PPRankChangedEvent;
 use Ifera\PurePermsScore\Main;
 use Ifera\ScoreHud\event\PlayerTagsUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
@@ -32,7 +33,7 @@ class EventListener implements Listener{
 		$this->sendUpdate($player);
 	}
 
-	public function onGroupChange(PPGroupChangedEvent $event){
+	public function onGroupChange(PPRankChangedEvent $event){
 		$player = $event->getPlayer();
 
 		if(!$player instanceof Player || !$player->isOnline()){
