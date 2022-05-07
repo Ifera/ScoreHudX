@@ -3,6 +3,10 @@ build-by-default: true
 branches:
 - main
 projects:
+  PlayedTimeScore:
+    path: PlayedTimeScore
+    lint:
+      phpstan: false
   EcoAPIScore:
     path: EcoAPIScore
     lint:
