@@ -5,4 +5,22 @@ branches:
 projects:
   PlayedTimeScore:
     path: PlayedTimeScore
+    lint:
+      phpstan: false
+  EcoAPIScore:
+    path: EcoAPIScore
+    lint:
+      phpstan: false
+  CombatScore:
+    path: CombatScore
+    lint:
+      phpstan: false
+  FactionsProScore:
+    path: FactionsProScore
+    lint:
+      phpstan: false
+  PurePermsScore:
+    path: PurePermsScore
+    lint:
+      phpstan: false
 ...
