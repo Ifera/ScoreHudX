@@ -12,6 +12,7 @@ A repository containing plugins implementing tags for ScoreHud.
 |CombatScore|[CombatLogger](https://github.com/JackNoordhuis/PocketMine-Plugins/tree/master/CombatLogger)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/CombatScore)|
 |FactionsProScore|[FactionsPro](https://github.com/poggit-orphanage/FactionsPro)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/FactionsProScore)|
 |PurePermsScore|[PurePerms](https://github.com/poggit-orphanage/PurePerms)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/PurePermsScore)|
+|PlayedTimeScore|[PlayedTime](https://github.com/supercrafter333/PlayedTime)|[Download](https://poggit.pmmp.io/ci/Ifera/ScoreHudX/PlayedTimeScore)|
 
 ## More plugins
 
