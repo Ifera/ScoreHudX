@@ -24,7 +24,8 @@ class TagResolveListener implements Listener
             return;
         }
 
-        $time = function (DateInterval $dt): string {
+        $time = function (DateInterval|null $dt): string {
+            if ($dt === null) return "§cNOT FOUND";
             $str = "";
             if ($dt->y > 0) $str .= "§e" . $dt->y . "y§7, ";
             if ($dt->m > 0) $str .= "§e" . $dt->m . "m§7, ";

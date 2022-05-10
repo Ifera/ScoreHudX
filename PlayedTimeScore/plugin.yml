@@ -2,7 +2,7 @@ name: PlayedTimeScore
 main: supercrafter333\PlayedTimeScore\Main
 src-namespace-prefix: supercrafter333\PlayedTimeScore
 api: 4.0.0
-version: 1.0.0
+version: 1.1.0
 author: supercrafter333
 description: A plugin implementing some basic tags for ScoreHud.
 depend: ["PlayedTime", "ScoreHud"]

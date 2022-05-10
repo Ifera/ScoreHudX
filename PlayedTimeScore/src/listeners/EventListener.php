@@ -31,9 +31,10 @@ class EventListener implements Listener
         $this->sendUpdate($event->getPlayer());
     }
 
-    private function sendUpdate(Player $player): void
+    public function sendUpdate(Player $player): void
     {
         $time = function (DateInterval $dt): string {
+            if ($dt === null) return "§cNOT FOUND";
             $str = "";
             if ($dt->y > 0) $str .= "§e" . $dt->y . "y§7, ";
             if ($dt->m > 0) $str .= "§e" . $dt->m . "m§7, ";
