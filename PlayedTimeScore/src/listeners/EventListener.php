@@ -33,7 +33,7 @@ class EventListener implements Listener
 
     public function sendUpdate(Player $player): void
     {
-        $time = function (DateInterval $dt): string {
+        $time = function (DateInterval|null $dt): string {
             if ($dt === null) return "§cNOT FOUND";
             $str = "";
             if ($dt->y > 0) $str .= "§e" . $dt->y . "y§7, ";
