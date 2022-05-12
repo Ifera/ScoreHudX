@@ -27,12 +27,13 @@ class TagResolveListener implements Listener
         $time = function (DateInterval|null $dt): string {
             if ($dt === null) return "§cNOT FOUND";
             $str = "";
-            if ($dt->y > 0) $str .= "§e" . $dt->y . "y§7, ";
-            if ($dt->m > 0) $str .= "§e" . $dt->m . "m§7, ";
-            if ($dt->d > 0) $str .= "§e" . $dt->d . "d§7, ";
-            if ($dt->h > 0) $str .= "§e" . $dt->h . "h§7, ";
-            if ($dt->i > 0) $str .= "§e" . $dt->i . "i§7, ";
-            if ($dt->s > 0) $str .= "§e" . $dt->s . "s";
+            $cfg = Main::getInstance()->getConfig()->get("dateformat-letters", []);
+            if ($dt->y > 0) $str .= "§e" . $dt->y . $cfg["year"] . "§7, ";
+            if ($dt->m > 0) $str .= "§e" . $dt->m . $cfg["month"] . "§7, ";
+            if ($dt->d > 0) $str .= "§e" . $dt->d . $cfg["day"] . "§7, ";
+            if ($dt->h > 0) $str .= "§e" . $dt->h . $cfg["hour"] . "§7, ";
+            if ($dt->i > 0) $str .= "§e" . $dt->i . $cfg["minute"] . "§7, ";
+            if ($dt->s > 0) $str .= "§e" . $dt->s . $cfg["second"];
             return $str;
         };
 

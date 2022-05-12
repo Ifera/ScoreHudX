@@ -18,6 +18,8 @@ class Main extends PluginBase
 
     protected function onEnable(): void
     {
+        $this->saveResource("config.yml");
+
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->getServer()->getPluginManager()->registerEvents(new TagResolveListener($this), $this);
 
