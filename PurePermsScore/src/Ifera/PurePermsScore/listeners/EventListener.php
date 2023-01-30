@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace Ifera\PurePermsScore\listeners;
 
-use _64FF00\PurePerms\event\PPGroupChangedEvent;
 use _64FF00\PurePerms\EventManager\PPRankChangedEvent;
 use Ifera\PurePermsScore\Main;
 use Ifera\ScoreHud\event\PlayerTagsUpdateEvent;
